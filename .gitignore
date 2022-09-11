@@ -27,7 +27,7 @@ ExportedObj/
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
 
-Assets/Logs/
+Logs/
 Assets/Editor Default Resources/
 Assets/ExternalDependencyManager/
 Assets/Firebase/
