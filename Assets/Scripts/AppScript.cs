@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Firebase;
 using Firebase.Analytics;
 
-public class AppScript : MonoBehaviour
-{
-    // Start is called before the first frame update
+public class AppScript : MonoBehaviour {
     void Start() {
         FirebaseInit();
     }
