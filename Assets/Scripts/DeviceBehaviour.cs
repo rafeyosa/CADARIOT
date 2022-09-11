@@ -10,6 +10,13 @@ public class DeviceBehaviour : MonoBehaviour {
 
     public UnityEvent OnDeviceUpdated = new UnityEvent();
 
+    public void SetName(string name) {
+        if(!string.IsNullOrEmpty(name)) {
+            _deviceData.name = name;
+            OnDeviceUpdated.Invoke();
+        }
+    }
+
     public void UpdateDevice(DeviceData deviceData) {
         if (!deviceData.Equals(_deviceData)) {
             _deviceData = deviceData;

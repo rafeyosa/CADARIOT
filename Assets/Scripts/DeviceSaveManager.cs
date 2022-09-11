@@ -8,7 +8,7 @@ public class DeviceSaveManager : MonoBehaviour {
     private const string DEVICE_KEY = "DEVICE_KEY";
     private FirebaseDatabase _database;
     public DeviceData LastDeviceData { get; private set;}
-    public UnityEvent OnDeviceUpdated = new UnityEvent();
+    public DeviceUpdatedEvent OnDeviceUpdated = new DeviceUpdatedEvent();
     private DatabaseReference _ref;
 
     private void Start() {
@@ -32,9 +32,9 @@ public class DeviceSaveManager : MonoBehaviour {
     public async Task<DeviceData?> LoadDevice() {
         var dataSnapshot = await _database.GetReference(DEVICE_KEY).GetValueAsync();
         if(!dataSnapshot.Exists) {
-            return JsonUtility.FromJson<DeviceData>(dataSnapshot.GetRawJsonValue());
+            return null;
         }
-        return null;
+        return JsonUtility.FromJson<DeviceData>(dataSnapshot.GetRawJsonValue());
     }
 
     public async Task<bool> SaveExist() {
@@ -55,3 +55,5 @@ public class DeviceSaveManager : MonoBehaviour {
         }
     }
 }
+ 
+public class DeviceUpdatedEvent : UnityEvent<DeviceData> {}
