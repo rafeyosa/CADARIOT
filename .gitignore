@@ -26,3 +26,11 @@ ExportedObj/
  
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
+
+Assets/Logs/
+Assets/Editor Default Resources/
+Assets/ExternalDependencyManager/
+Assets/Firebase/
+Assets/Plugins/
+Packages/com.ptc.vuforia.engine-10.3.2.tgz
+*.apk
