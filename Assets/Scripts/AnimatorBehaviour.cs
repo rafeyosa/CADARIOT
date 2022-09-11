@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ActionPanelScript : MonoBehaviour {
+public class AnimatorBehaviour : MonoBehaviour {
     public Animator animator;
 
     public void ShowPanel() {

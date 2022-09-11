@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class SyncDeviceToSave : MonoBehaviour {
@@ -10,8 +11,11 @@ public class SyncDeviceToSave : MonoBehaviour {
         _deviceSaveManager = FindObjectOfType<DeviceSaveManager>();
     }
 
-    private void Start() {
-        var deviceData = _deviceSaveManager.LoadDevice();
+    private IEnumerator Start() {
+        var deviceDataTask = _deviceSaveManager.LoadDevice();
+        yield return new WaitUntil(() => deviceDataTask.IsCompleted);
+        var deviceData = deviceDataTask.Result;
+
         if(deviceData.HasValue) {
             _device.UpdateDevice(deviceData.Value);
         }
