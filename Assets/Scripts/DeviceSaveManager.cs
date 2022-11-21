@@ -5,9 +5,9 @@ using Firebase;
 using Firebase.Database;
 
 public class DeviceSaveManager : MonoBehaviour {
-    private const string DEVICE_KEY = "DEVICE_KEY";
+    private const string DEVICE_KEY = "device/cadariot-e5c76";
     private FirebaseDatabase _database;
-    public DeviceData LastDeviceData { get; private set;}
+    public DeviceModel LastDeviceData { get; private set;}
     public DeviceUpdatedEvent OnDeviceUpdated = new DeviceUpdatedEvent();
     private DatabaseReference _ref;
 
@@ -23,18 +23,21 @@ public class DeviceSaveManager : MonoBehaviour {
         _database = null;
     }
 
-    public void SaveDevice(DeviceData device) {
+    public void SaveDevice(DeviceModel device) {
         if(!device.Equals(LastDeviceData)) {
+            Debug.Log("rafeyosa json: " + JsonUtility.ToJson(device));
             _database.GetReference(DEVICE_KEY).SetRawJsonValueAsync(JsonUtility.ToJson(device));
         }
     }
 
-    public async Task<DeviceData?> LoadDevice() {
+    public async Task<DeviceModel?> LoadDevice() {
         var dataSnapshot = await _database.GetReference(DEVICE_KEY).GetValueAsync();
         if(!dataSnapshot.Exists) {
+            Debug.Log("Json: null");
             return null;
         }
-        return JsonUtility.FromJson<DeviceData>(dataSnapshot.GetRawJsonValue());
+        Debug.Log("Json: " + dataSnapshot.GetRawJsonValue());
+        return JsonUtility.FromJson<DeviceModel>(dataSnapshot.GetRawJsonValue());
     }
 
     public async Task<bool> SaveExist() {
@@ -49,11 +52,11 @@ public class DeviceSaveManager : MonoBehaviour {
     private void HandleValueChanged(object sender, ValueChangedEventArgs e) {
         var json = e.Snapshot.GetRawJsonValue();
         if(!string.IsNullOrEmpty(json)) {
-            var deviceData = JsonUtility.FromJson<DeviceData>(json);
-            LastDeviceData = deviceData;
-            OnDeviceUpdated.Invoke(deviceData);
+            var device = JsonUtility.FromJson<DeviceModel>(json);
+            LastDeviceData = device;
+            OnDeviceUpdated.Invoke(device);
         }
     }
 }
  
-public class DeviceUpdatedEvent : UnityEvent<DeviceData> {}
+public class DeviceUpdatedEvent : UnityEvent<DeviceModel> {}

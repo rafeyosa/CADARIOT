@@ -21,7 +21,7 @@ public class SyncDeviceToSave : MonoBehaviour {
         _deviceSaveManager.SaveDevice(_device.DeviceData);
     }
 
-    private void HandleDeviceSaveUpdated(DeviceData deviceData) {
-        _device.UpdateDevice(deviceData);
+    private void HandleDeviceSaveUpdated(DeviceModel device) {
+        _device.UpdateDevice(device);
     }
 }

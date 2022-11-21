@@ -3,23 +3,21 @@ using UnityEngine.Events;
 
 public class DeviceBehaviour : MonoBehaviour {
     [SerializeField]
-    private DeviceData _deviceData;
-    public DeviceData DeviceData => _deviceData;
-    public string Name => _deviceData.name;
-    public string Color => _deviceData.color;
+    private DeviceModel _device;
+    public DeviceModel DeviceData => _device;
 
     public UnityEvent OnDeviceUpdated = new UnityEvent();
 
     public void SetName(string name) {
         if(!string.IsNullOrEmpty(name)) {
-            _deviceData.name = name;
+            _device.name = name;
             OnDeviceUpdated.Invoke();
         }
     }
 
-    public void UpdateDevice(DeviceData deviceData) {
-        if (!deviceData.Equals(_deviceData)) {
-            _deviceData = deviceData;
+    public void UpdateDevice(DeviceModel device) {
+        if (!device.Equals(_device)) {
+            _device = device;
             OnDeviceUpdated.Invoke();
         }
     }

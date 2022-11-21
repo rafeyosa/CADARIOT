@@ -1,20 +1,25 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LoadUIDataScript : MonoBehaviour {
-    public DeviceBehaviour device;
+    public DeviceBehaviour deviceBehaviour;
 
     public Text Text1;
     public Text Text2;
     public InputField InputField;
     public Button Button;
     void Update() {
-        Text1.text = device.DeviceData.name;
-        Text2.text = device.DeviceData.color;
+        try {
+            Text1.text = deviceBehaviour.DeviceData.name;
+            Text2.text = deviceBehaviour.DeviceData.description;
+        } catch (NullReferenceException ex) {
+            Debug.Log(ex.Message);
+        }
     }
 
     public void SetName() {
         var name = InputField.text;
-        device.SetName(name);
+        deviceBehaviour.SetName(name);
     }
 }
