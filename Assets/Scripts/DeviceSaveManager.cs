@@ -33,10 +33,8 @@ public class DeviceSaveManager : MonoBehaviour {
     public async Task<DeviceModel?> LoadDevice() {
         var dataSnapshot = await _database.GetReference(DEVICE_KEY).GetValueAsync();
         if(!dataSnapshot.Exists) {
-            Debug.Log("Json: null");
             return null;
         }
-        Debug.Log("Json: " + dataSnapshot.GetRawJsonValue());
         return JsonUtility.FromJson<DeviceModel>(dataSnapshot.GetRawJsonValue());
     }
 
