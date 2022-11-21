@@ -574,7 +574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a441b57f294d014a89c66cc0e386d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  device: {fileID: 2039131883}
+  deviceBehaviour: {fileID: 2039131883}
   Text1: {fileID: 1481684611}
   Text2: {fileID: 1036370069}
   InputField: {fileID: 282458180}
@@ -1272,9 +1272,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c85622e31b0c046aef1f8c2156a180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deviceData:
+  _device:
     name: 
-    color: 
+    description: 
+    connectionStatus: 0
+    command: []
+    actuator: []
+    container: []
+    sensor: []
+    updateAt: 
   OnDeviceUpdated:
     m_PersistentCalls:
       m_Calls:
