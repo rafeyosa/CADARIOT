@@ -19,7 +19,6 @@ public class DeviceBehaviour : MonoBehaviour {
         if (device != null) {
             if (!device.Equals(_device)) {
                 _device = device;
-                OnDeviceUpdated.Invoke();
             }
         }
     }

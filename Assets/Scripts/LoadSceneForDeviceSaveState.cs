@@ -13,7 +13,7 @@ public class LoadSceneForDeviceSaveState : MonoBehaviour {
     private Coroutine _coroutine;
 
     public void Trigger() {
-        if(_coroutine == null) {
+        if (_coroutine == null) {
             _coroutine = StartCoroutine(LoadSceneCoroutine());
         }
     }

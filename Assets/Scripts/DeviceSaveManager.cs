@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
-using Firebase;
 using Firebase.Database;
 
 public class DeviceSaveManager : MonoBehaviour {
@@ -24,10 +23,9 @@ public class DeviceSaveManager : MonoBehaviour {
     }
 
     public void SaveDevice(DeviceModel device) {
-        if(!device.Equals(LastDeviceData)) {
-            Debug.Log("rafeyosa json: " + JsonUtility.ToJson(device));
+        // if (!device.Equals(LastDeviceData)) {
             _database.GetReference(DEVICE_KEY).SetRawJsonValueAsync(JsonUtility.ToJson(device));
-        }
+        // }
     }
 
     public async Task<DeviceModel?> LoadDevice() {

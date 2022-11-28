@@ -5,21 +5,27 @@ using UnityEngine.UI;
 public class LoadUIDataScript : MonoBehaviour {
     public DeviceBehaviour deviceBehaviour;
 
-    public Text Text1;
-    public Text Text2;
-    public InputField InputField;
-    public Button Button;
+    public Text TextBucket1;
+    public Text TextBucket2;
+    public Text TextBucket3;
+    public Text TextMotor;
+    public Text TextServo1;
+    public Text TextServo2;
+    int i = 0;
     void Update() {
         try {
-            Text1.text = deviceBehaviour.DeviceData.name;
-            Text2.text = deviceBehaviour.DeviceData.description;
+            TextBucket1.text = deviceBehaviour.DeviceData.container[0].data.value.ToString();
+            TextBucket2.text = deviceBehaviour.DeviceData.container[1].data.value.ToString();
+            TextBucket3.text = deviceBehaviour.DeviceData.container[2].data.value.ToString();
+            TextMotor.text = deviceBehaviour.DeviceData.actuator[0].data.speed.ToString();
+            TextServo1.text = deviceBehaviour.DeviceData.actuator[1].data.degree.ToString();
+            TextServo2.text = deviceBehaviour.DeviceData.actuator[2].data.degree.ToString();
         } catch (NullReferenceException ex) {
             Debug.Log(ex.Message);
         }
     }
-
-    public void SetName() {
-        var name = InputField.text;
-        deviceBehaviour.SetName(name);
+    public void setName() {
+        deviceBehaviour.SetName("Rafeyosa " + i);
+        i++;
     }
 }

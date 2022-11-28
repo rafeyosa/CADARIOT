@@ -13,7 +13,6 @@ public class SyncDeviceToSave : MonoBehaviour {
     private void Start() {
         _deviceSaveManager.OnDeviceUpdated.AddListener(HandleDeviceSaveUpdated);
         _device.OnDeviceUpdated.AddListener(HandleDeviceUpdated);
-        _device.UpdateDevice(_deviceSaveManager.LastDeviceData);
     }
 
     private void HandleDeviceUpdated() {
