@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,7 +22,7 @@ public class GraphScript : MonoBehaviour {
         gameObject.GetComponent<Image>().sprite = cicleSprite;
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
         rectTransform.anchoredPosition = anchoredPosition;
-        rectTransform.sizeDelta = new Vector2(20, 20);
+        rectTransform.sizeDelta = new Vector2(12, 12);
         rectTransform.anchorMin = new Vector2(0, 0);
         rectTransform.anchorMax = new Vector2(0, 0);
         return gameObject;
@@ -49,10 +48,23 @@ public class GraphScript : MonoBehaviour {
     private void CreateDotConnection(Vector2 dotPositionA, Vector2 dotPositionB) {
         GameObject gameObject = new GameObject("dotConnection", typeof(Image));
         gameObject.transform.SetParent(graphContainer, false);
+        gameObject.GetComponent<Image>().color = new Color(1, 1, 1, .5f);
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
-        rectTransform.anchoredPosition = dotPositionA;
-        rectTransform.sizeDelta = new Vector2(100, 3f);
+        Vector2 dir = (dotPositionB - dotPositionA).normalized;
+        float distance = Vector2.Distance(dotPositionA, dotPositionB);
         rectTransform.anchorMin = new Vector2(0, 0);
         rectTransform.anchorMax = new Vector2(0, 0);
+        rectTransform.sizeDelta = new Vector2(distance, 3f);
+        rectTransform.anchoredPosition = dotPositionA + dir * distance * .5f;
+        rectTransform.localEulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(dir));
+    }
+
+    private static float GetAngleFromVectorFloat(Vector3 dir) {
+        dir = dir.normalized;
+        float n = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        if (n < 0)
+            n += 360;
+
+        return n;
     }
 }
