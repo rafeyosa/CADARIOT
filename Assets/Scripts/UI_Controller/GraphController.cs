@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GraphScript : MonoBehaviour {
+public class GraphController : MonoBehaviour {
     [SerializeField] private Sprite cicleSprite;
     private RectTransform graphContainer;
     public float paddingLeft;
