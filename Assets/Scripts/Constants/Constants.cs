@@ -7,6 +7,18 @@ public static class Constants {
     public const string ColorSensorType = "colorSensor";
     public const string TemperatureSensorType = "temperatureSensor";
     public const string ProximitySensorType = "proximity";
+    public const string VoltageSensorType = "voltageSensor";
 
     public const string defaultValue = "No Data";
+
+    public const string redColor = "red";
+    public const string blueColor = "blue";
+    public const string greenColor = "green";
+    public const string whiteColor = "white";
+    public const string unknownColor = "unknown";
+
+    public const string newDetechErrorCode = "eN";
+    public const string lostItemErrorCode = "eL";
+    public const string failedReadColorErrorCode = "eR";
+    public const string noErrorCode = "eE";
 }

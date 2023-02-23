@@ -11,4 +11,6 @@ public class DeviceModel {
     public List<ItemModel<ContainerModel>> container;
     public List<ItemModel<SensorModel>> sensor;
     public string updateAt;
+    public string errorCode;
+    public int position;
 }

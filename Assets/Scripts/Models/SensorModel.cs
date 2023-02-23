@@ -2,8 +2,9 @@ using System;
 
 [Serializable]
 public class SensorModel {
-    public ColorModel color;
-    public string colorName;
+    public string color;
     public bool isDetect;
     public float temperature;
+    public float volt;
+    public float amp;
 }
