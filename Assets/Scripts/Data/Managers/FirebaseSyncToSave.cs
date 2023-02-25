@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SyncToSave : MonoBehaviour {
+public class FirebaseSyncToSave : MonoBehaviour {
     [SerializeField]
     private FirebaseSaveManager _firebaseSaveManager;
     [SerializeField]
