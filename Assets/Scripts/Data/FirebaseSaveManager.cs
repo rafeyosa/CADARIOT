@@ -6,7 +6,7 @@ using Firebase.Database;
 public class FirebaseSaveManager : MonoBehaviour {
     private FirebaseDatabase _database;
     private DatabaseReference _ref;
-    public FirebaseUpdatedEvent OnDataUpdated = new FirebaseUpdatedEvent();
+    public UnityEvent<DeviceModel> OnDataUpdated = new UnityEvent<DeviceModel>();
 
     private void Start() {
         _database = FirebaseDatabase.DefaultInstance;
@@ -49,5 +49,3 @@ public class FirebaseSaveManager : MonoBehaviour {
         }
     }
 }
- 
-public class FirebaseUpdatedEvent : UnityEvent<DeviceModel> {}

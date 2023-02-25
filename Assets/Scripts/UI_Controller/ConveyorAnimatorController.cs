@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,28 +21,24 @@ public class ConveyorAnimatorController : MonoBehaviour {
     }
     
     void Update() {
-        PositionAnimate();
-        DetechError();
+        try {
+            PositionAnimate();
+            DetechError();
+        } catch (Exception e) {}
     }
 
     private void PositionAnimate() {
         int position = deviceData.Device.position;
         bool slider1 = deviceData.Device.actuator[1].data.isActive;
         bool slider2 = deviceData.Device.actuator[2].data.isActive;
-        string colorType = deviceData.Device.sensor[0].data.color;
 
-        // Debug.Log("Rafeyosa: " + colorType + " " + position + " " + slider1 + " " + slider2 + " - " + isNewStart);
         bool isSliding = slider1 || slider2;
         SetAnimation(position, isSliding);
 
-        // if (position == 0) {
-        //     SetAnimation(position, false, false);
-        // }
         if (position == 2) {
             SetColorItem();
         }
         if (isSliding || position == 4) {
-            // Debug.Log("Rafeyosa: EnableNewStartAnimation");
             EnableNewStartAnimation();
         }
     }

@@ -9,18 +9,25 @@ public class GraphController : MonoBehaviour {
     public float paddingTop;
     public float paddingRight;
     public float paddingBottom;
+    public GraphData graphData;
 
-    private void Awake() {
+    void Awake() {
         graphContainer = transform.Find("GraphContainer").GetComponent<RectTransform>();
-
-        List<int> valueList = new List<int>() { 0, 98, 255, 45, 230, 202, 17, 105, 130, 255};
-        ShowGraph(valueList);
     }
 
-    private void ShowGraph(List<int> valueList) {
+    void Update() {
+        foreach (Transform objMen in graphContainer) {
+             Destroy(objMen.gameObject);
+        }
+        var graph = graphData.GetInstance();
+        ShowGraph(graph.GraphList, graph.min, graph.max);
+    }
+
+    private void ShowGraph(List<float> valueList, float min, float max) {
         float graphHeight = graphContainer.sizeDelta.y;
         float graphWidth = graphContainer.sizeDelta.x;
-        float yMaximun = 255f;
+        float yMinimum = min;
+        float yMaximun = max;
         float xMaximun = 100f;
 
         DrawGraph(graphWidth, graphHeight);
@@ -29,7 +36,7 @@ public class GraphController : MonoBehaviour {
         int length = valueList.Count;
         for (int i = 0; i < length; i++) {
             float xPosition = i * (xMaximun / (length-1)) * ((graphWidth - (paddingLeft + paddingRight)) / xMaximun) + paddingLeft;
-            float yPosition = (valueList[i] / yMaximun) * (graphHeight - (paddingTop + paddingBottom)) + paddingBottom;
+            float yPosition = (valueList[i] - yMinimum) * (graphHeight - (paddingTop + paddingBottom)) / (yMaximun - yMinimum) + paddingBottom;
             GameObject circleGameObject = CreateCircle(new Vector2(xPosition, yPosition));
             if (lastCircleGameObject !=  null) {
                 CreateDotConnection(

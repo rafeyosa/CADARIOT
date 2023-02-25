@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class LoadDataController : MonoBehaviour {
     public DeviceData deviceData;
-
     public Text[] TextBucket;
     public Text TextMotor;
     public Image[] ImageColorServo;
@@ -18,10 +17,6 @@ public class LoadDataController : MonoBehaviour {
     void Update() {
         setTextContainer();
         setImageColorServo();
-        
-        // TextMotor.text = deviceData.Device.actuator[0].data.speed.ToString();
-        // TextServo1.text = deviceData.Device.actuator[1].data.degree.ToString();
-        // TextServo2.text = deviceData.Device.actuator[2].data.degree.ToString();
     }
 
     private void setDefaultTextContainer() {
