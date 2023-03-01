@@ -2,7 +2,7 @@ using UnityEngine;
 using Firebase;
 using Firebase.Analytics;
 
-public class AppScript : MonoBehaviour {
+public class App : MonoBehaviour {
     void Start() {
         FirebaseInit();
     }
