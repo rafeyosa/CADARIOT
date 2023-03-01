@@ -4,21 +4,23 @@ using UnityEngine;
 
 public static class ErrorTypeData {
     public static List<ErrorModel> errorTypeList = new List<ErrorModel>() {
-        new ErrorModel{
-            errorCode = "eE", 
-            message = ""
-        },
         new ErrorModel {
             errorCode = "eN", 
-            message = "Error: New Detect!"
+            message = "Error: New Detect!",
+            description = "this A",
+            createdAt = ""
         },
         new ErrorModel {
             errorCode = "eL", 
-            message = "Error: Lost Item Color"
+            message = "Error: Lost Item Color",
+            description = "this B",
+            createdAt = ""
         },
         new ErrorModel {
             errorCode = "eR", 
-            message = "Error: Failed Read Color"
+            message = "Error: Failed Read Color",
+            description = "this C",
+            createdAt = ""
         }
     };
 }
