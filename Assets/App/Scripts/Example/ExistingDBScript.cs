@@ -9,7 +9,9 @@ public class ExistingDBScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		var ds = new DataService ("existing.db");
-		//ds.CreateDB ();
+		// ds.CreateDBTest();
+		// ds.InsertDataDummy();
+
 		var people = ds.GetPersons ();
 		ToConsole (people);
 
@@ -21,16 +23,15 @@ public class ExistingDBScript : MonoBehaviour {
 		ToConsole("New person has been created");
 		var p = ds.GetJohnny ();
 		ToConsole(p.ToString());
-
 	}
 	
-	private void ToConsole(IEnumerable<Person> people){
+	private void ToConsole(IEnumerable<Person> people) {
 		foreach (var person in people) {
 			ToConsole(person.ToString());
 		}
 	}
 
-	private void ToConsole(string msg){
+	private void ToConsole(string msg) {
 		DebugText.text += System.Environment.NewLine + msg;
 		Debug.Log (msg);
 	}

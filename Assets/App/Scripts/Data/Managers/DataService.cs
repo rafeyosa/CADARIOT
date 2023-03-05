@@ -10,7 +10,7 @@ public class DataService  {
 
 	private SQLiteConnection _connection;
 
-	public DataService(string DatabaseName){
+	public DataService(string DatabaseName) {
 
 #if UNITY_EDITOR
             var dbPath = string.Format(@"Assets/StreamingAssets/{0}", DatabaseName);
@@ -65,9 +65,48 @@ public class DataService  {
 	}
 
 	public void CreateDB(){
+		_connection.DropTable<ErrorModel>();
+		_connection.CreateTable<ErrorModel>();
+	}
+
+	public IEnumerable<ErrorModel> GetErrorList() {
+		return _connection.Table<ErrorModel>();
+	}
+
+	public IEnumerable<ErrorModel> GetAllErrorList() {
+		return _connection.Table<ErrorModel>();
+	}
+
+	public ErrorModel GetErrorModelByMessage(string msg) {
+		return _connection.Table<ErrorModel>().Where(x => x.message == msg).FirstOrDefault();
+	}
+
+	public IEnumerable<ErrorModel> GetErrorListByMessage(string msg) {
+		return _connection.Table<ErrorModel>().Where(x => x.message == msg);
+	}
+
+	public void AddErrorModel(ErrorModel errorModel) {
+		_connection.Insert(errorModel);
+	}
+
+	public void AddErrorList(IEnumerable<ErrorModel> errorList) {
+		_connection.InsertAll(errorList);
+	}
+
+	public void RemoveErrorModel(ErrorModel errorModel) {
+		_connection.Delete<ErrorModel>(errorModel);
+	}
+
+	public void RemoveAllErrorModel() {
+		_connection.DeleteAll<ErrorModel>();
+	}
+
+	public void CreateDBTest(){
 		_connection.DropTable<Person> ();
 		_connection.CreateTable<Person> ();
+	}
 
+	public void InsertDataDummy() {
 		_connection.InsertAll (new[]{
 			new Person{
 				Id = 1,
