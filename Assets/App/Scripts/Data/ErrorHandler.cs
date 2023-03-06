@@ -39,9 +39,7 @@ public class ErrorHandler : MonoBehaviour {
     public void CheckError(DeviceModel device) {
         string errorCode = device.errorCode;
         string timestamp = device.updateAt;
-
         bool isValid = errorCode != lastErrorCode && !string.IsNullOrEmpty(errorCode);
-        // errorCode != Constants.noErrorCode
 
         if (isValid) {
             lastErrorCode = errorCode;
@@ -69,8 +67,9 @@ public class ErrorHandler : MonoBehaviour {
 		dataService.AddErrorModel(errorModel);
 	}
 
-    private void GetAllErrorList() {
+    public IEnumerable<ErrorModel> GetAllErrorList() {
 		var errors = dataService.GetAllErrorList();
 		ToConsole(errors);
+        return errors;
 	}
 }
