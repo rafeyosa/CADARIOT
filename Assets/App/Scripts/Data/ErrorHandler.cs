@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using SQLite4Unity3d;
 
 public class ErrorHandler : MonoBehaviour {
     private static ErrorHandler instance;
     private DataService dataService;
     private string lastErrorCode;
+    public UnityEvent<ErrorModel> OnNewErrorComing = new UnityEvent<ErrorModel>();
 
     void Start() {
         if (instance != null && instance != this) {
@@ -48,19 +50,18 @@ public class ErrorHandler : MonoBehaviour {
             }
             foreach (var errorType in ErrorTypeData.errorTypeList) {
                 if (errorCode == errorType.errorCode) {
-                    AddErrorToDatabase(
-                        new ErrorModel {
-                            errorCode = errorType.errorCode, 
-                            message = errorType.message,
-                            description = errorType.description,
-                            createdAt = timestamp
-                        }
-                    );
+                    ErrorModel newError = new ErrorModel {
+                        errorCode = errorType.errorCode, 
+                        message = errorType.message,
+                        description = errorType.description,
+                        createdAt = timestamp
+                    };
+                    AddErrorToDatabase(newError);
+                    OnNewErrorComing.Invoke(newError);
                     break;
                 }
             }
         }
-        GetAllErrorList();
     }
 
     private void AddErrorToDatabase(ErrorModel errorModel) {
