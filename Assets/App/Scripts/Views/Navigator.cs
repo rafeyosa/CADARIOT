@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneNavigation : MonoBehaviour {
+public class Navigator : MonoBehaviour {
     void Update() {
         if (Input.GetKeyDown(KeyCode.Escape))
             Application.Quit();

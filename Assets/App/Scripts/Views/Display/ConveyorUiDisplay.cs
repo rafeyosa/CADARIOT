@@ -2,36 +2,35 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LoadDataController : MonoBehaviour {
+
+public class ConveyorUiDisplay : MonoBehaviour {
     public DeviceData deviceData;
     public Text[] TextBucket;
-    public Text TextMotor;
     public Image[] ImageColorServo;
-    int i = 0;
 
     void Start() {
-        setDefaultTextContainer();
-        setDefaultImageColorServo();
+        SetDefaultTextContainer();
+        SetDefaultImageColorServo();
     }
     
     void Update() {
-        setTextContainer();
-        setImageColorServo();
+        SetTextContainer();
+        SetImageColorServo();
     }
 
-    private void setDefaultTextContainer() {
+    private void SetDefaultTextContainer() {
         for (int i = 0; i < TextBucket.Length; i++) {
             TextBucket[i].text = Constants.defaultValue;
         }
     }
 
-    private void setDefaultImageColorServo() {
+    private void SetDefaultImageColorServo() {
         for (int i = 0; i < ImageColorServo.Length; i++) {
             ImageColorServo[i].color = new Color32(255,60,0,255);
         }
     }
 
-    private void setTextContainer() {
+    private void SetTextContainer() {
         var containerList = deviceData.Device.container;
         int indexContainer = 0;
         int indexText = 0;
@@ -46,7 +45,7 @@ public class LoadDataController : MonoBehaviour {
         }
     }
 
-    private void setImageColorServo() {
+    private void SetImageColorServo() {
         var servoList = deviceData.Device.actuator;
         int indexServo = 0;
         int indexImage = 0;
@@ -63,10 +62,5 @@ public class LoadDataController : MonoBehaviour {
             }
             indexServo++;
         }
-    }
-    
-    public void setName() {
-        deviceData.SetName("Rafeyosa " + i);
-        i++;
     }
 }

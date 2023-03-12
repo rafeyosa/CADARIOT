@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class DeviceModel {
     public string name;
     public string description;
+    public string imageUrl;
     public bool connectionStatus;
     public List<string> command;
     public List<ItemModel<ActuatorModel>> actuator;

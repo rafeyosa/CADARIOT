@@ -14,10 +14,8 @@ public class DeviceData : MonoBehaviour {
         }
     }
 
-    public void SetName(string name) {
-        if (!string.IsNullOrEmpty(name)) {
-            _device.name = name;
-            OnDeviceUpdated.Invoke();
-        }
+    public void CheckConnection() {
+        _device.connectionStatus = false;
+        OnDeviceUpdated.Invoke();
     }
 }

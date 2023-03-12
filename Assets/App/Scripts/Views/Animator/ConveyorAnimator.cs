@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConveyorAnimatorController : MonoBehaviour {
+public class ConveyorAnimator : MonoBehaviour {
     public DeviceData deviceData;
     public GameObject item;
     private Animator animator;

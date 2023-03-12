@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AnimatorController : MonoBehaviour {
+public class ViewAnimator : MonoBehaviour {
     private Animator animator;
 
     private void Awake() {
