@@ -13,7 +13,7 @@ public class LogController : MonoBehaviour {
     }
 
     void Start() {
-        dataService = new DataService("errorDatabase.db");
+        dataService = new DataService(Constants.localDatabase);
         GetLog();
     }
 
