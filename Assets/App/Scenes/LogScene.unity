@@ -1332,7 +1332,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1716794392}
         m_TargetAssemblyTypeName: Navigator, Assembly-CSharp
-        m_MethodName: MoveMainScene
+        m_MethodName: Back
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

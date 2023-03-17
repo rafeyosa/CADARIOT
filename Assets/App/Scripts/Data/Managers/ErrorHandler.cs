@@ -15,7 +15,7 @@ public class ErrorHandler : MonoBehaviour {
             Destroy(this);
         } else {
             instance = this;
-            dataService = new DataService("errorDatabase.db");
+            dataService = new DataService("localDatabase.db");
             // dataService.CreateDB();
         }
     }

@@ -24,7 +24,6 @@ public class InfoDetailDisplay : MonoBehaviour {
 
     private void FetchImage() {
         var imageUrl = deviceData.Device.imageUrl;
-        Debug.Log("imageUrl: " + imageUrl);
         if(imageUrl != lastImageUrl && !string.IsNullOrEmpty(imageUrl)) {
             lastImageUrl = imageUrl;
             StartCoroutine(GetTexture(imageUrl));
