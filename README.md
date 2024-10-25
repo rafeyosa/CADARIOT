@@ -1,6 +1,7 @@
 # CADARIOT
 
-Digital Twin App (Internet of Things, Augmented Reality, Vuforia, Firebase RTDB) used with real device connected realtime
+Digital Twin App (Internet of Things, Augmented Reality, Vuforia, Firebase RTDB, C#) used with real device connected realtime
+
 IDE: Unity 2020.3.14f1
 
 Paper link: https://www.researchgate.net/publication/378519214_Development_of_a_Digital_Twin_Prototype_for_Industrial_Manufacturing_Monitoring_System_Using_IoT_and_Augmented_Reality
